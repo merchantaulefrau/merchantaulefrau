@@ -65,23 +65,31 @@ export default function MyPortfolio() {
 
   return (
     <div
-      className={`relative min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 ${
+      className={`min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 ${
         darkMode
           ? "bg-gray-900 text-white"
           : "bg-gradient-to-br from-yellow-300 to-pink-300 text-black"
       } transition-colors duration-500`}
     >
-      {/* Top Controls fixed in top-right */}
-      <div className="fixed top-2 right-2 sm:top-4 sm:right-4 flex gap-2 z-10">
-        <Button
-          onClick={handleShare}
-          aria-label="Share this page"
-          className={`focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 ${
-            isSharing ? "opacity-50 pointer-events-none" : ""
-          }`}
+      {/* Top Controls */}
+      <div className="w-full flex justify-end items-center gap-2 mb-4 pr-2 sm:pr-4">
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{
+            repeat: Infinity,
+            duration: 1.5,
+            ease: "easeInOut",
+          }}
         >
-          <Share2 />
-        </Button>
+          <Button
+            onClick={handleShare}
+            aria-label="Share this page"
+            className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
+          >
+            <Share2 />
+          </Button>
+        </motion.div>
+
         <Button
           onClick={() => setDarkMode(!darkMode)}
           aria-label="Toggle dark mode"
@@ -101,82 +109,82 @@ export default function MyPortfolio() {
         </Button>
       </div>
 
-      {/* Fade-in main content */}
+      {/* Fade Animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="flex flex-col items-center justify-center w-full"
       >
-        {/* Logo */}
-        <div className="mb-3 sm:mb-4">
-          <img
-            src="/logo.png"
-            alt="Aulefrau's Nook logo"
-            loading="lazy"
-            className="w-24 h-24 sm:w-36 sm:h-36 rounded-full border-4 border-white shadow-lg"
-          />
-        </div>
-
-        {/* Name */}
-        <div className="text-center mb-4 sm:mb-6 max-w-xs sm:max-w-md">
-          <h1 className="text-2xl sm:text-4xl font-bold drop-shadow">
-            Aulefrau's Nook
-          </h1>
-          <p className="text-[10px] sm:text-xs mt-2 sm:mt-3 leading-relaxed">
-            Original art, handmade décor, and unique accessories crafted with love.
-            Commissions welcome for one-of-a-kind pieces.
-          </p>
-        </div>
-
-        {/* Links */}
-        <div className="w-full max-w-[280px] space-y-2 sm:space-y-3">
-          {links.map((link) => (
-            <a
-              key={link.id}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 rounded-2xl"
-            >
-              <motion.div
-                whileTap={{ scale: 0.97 }}
-                whileHover={{ scale: 1.03 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: link.id * 0.15 }}
-              >
-                <Card
-                  className={`w-full rounded-2xl border border-white/40 ${
-                    darkMode
-                      ? "bg-white/10 backdrop-blur-lg text-white"
-                      : "bg-white/30 backdrop-blur-lg text-black"
-                  } shadow-xl hover:scale-[1.02] hover:brightness-105 hover:shadow-2xl hover:shadow-pink-300/30 transition-all`}
-                >
-                  <CardContent className="py-1.5 px-2 flex items-center gap-1.5">
-                    <link.Icon className={`w-5 h-5 ${link.iconColor}`} />
-                    <span className="flex-1 text-center text-base font-medium">
-                      {link.title}
-                    </span>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </a>
-          ))}
-        </div>
-
-        {/* Footer */}
-        <footer className="mt-20 sm:mt-24 mb-4 text-center text-xs opacity-80">
-          <div className="flex items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center w-full">
+          {/* Logo */}
+          <div className="mb-3 sm:mb-4">
             <img
               src="/logo.png"
-              alt="Footer logo"
+              alt="Aulefrau's Nook logo"
               loading="lazy"
-              className="w-5 h-5 rounded-full border border-white"
+              className="w-24 h-24 sm:w-36 sm:h-36 rounded-full border-4 border-white shadow-lg"
             />
-            <span>© 2018 Aulefrau's Nook</span>
           </div>
-        </footer>
+
+          {/* Name */}
+          <div className="text-center mb-4 sm:mb-6 max-w-xs sm:max-w-md">
+            <h1 className="text-2xl sm:text-4xl font-bold drop-shadow">
+              Aulefrau's Nook
+            </h1>
+            <p className="text-[10px] sm:text-xs mt-2 sm:mt-3 leading-relaxed">
+              Original art, handmade décor, and unique accessories crafted with love.
+              Commissions welcome for one-of-a-kind pieces.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div className="w-full max-w-[280px] space-y-2 sm:space-y-3">
+            {links.map((link) => (
+              <a
+                key={link.id}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 rounded-2xl"
+              >
+                <motion.div
+                  whileTap={{ scale: 0.97 }}
+                  whileHover={{ scale: 1.03 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: link.id * 0.15 }}
+                >
+                  <Card
+                    className={`w-full rounded-2xl border border-white/40 ${
+                      darkMode
+                        ? "bg-white/10 backdrop-blur-lg text-white"
+                        : "bg-white/30 backdrop-blur-lg text-black"
+                    } shadow-xl hover:scale-[1.02] hover:brightness-105 hover:shadow-2xl hover:shadow-pink-300/30 transition-all`}
+                  >
+                    <CardContent className="py-1.5 px-2 flex items-center gap-1.5">
+                      <link.Icon className={`w-5 h-5 ${link.iconColor}`} />
+                      <span className="flex-1 text-center text-base font-medium">
+                        {link.title}
+                      </span>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </a>
+            ))}
+          </div>
+
+          {/* Footer */}
+          <footer className="mt-20 sm:mt-24 mb-4 text-center text-xs opacity-80">
+            <div className="flex items-center justify-center gap-2">
+              <img
+                src="/logo.png"
+                alt="Footer logo"
+                className="w-5 h-5 rounded-full border border-white"
+              />
+              <span>© 2018 Aulefrau's Nook</span>
+            </div>
+          </footer>
+        </div>
       </motion.div>
     </div>
   );
