@@ -9,6 +9,7 @@ import { FaFacebook, FaTiktok, FaInstagram } from "react-icons/fa";
 
 export default function MyPortfolio() {
   const [darkMode, setDarkMode] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("darkMode");
@@ -44,7 +45,9 @@ export default function MyPortfolio() {
   ];
 
   const handleShare = async () => {
+    if (isSharing) return;
     try {
+      setIsSharing(true);
       if (navigator.share) {
         await navigator.share({
           title: "My LinkHub",
@@ -55,11 +58,12 @@ export default function MyPortfolio() {
       }
     } catch (err) {
       console.error("Error sharing:", err);
+    } finally {
+      setIsSharing(false);
     }
   };
 
   return (
-    // ✅ Wrap className on a plain div
     <div
       className={`min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 ${
         darkMode
@@ -67,7 +71,6 @@ export default function MyPortfolio() {
           : "bg-gradient-to-br from-yellow-300 to-pink-300 text-black"
       } transition-colors duration-500`}
     >
-      {/* Animate the opacity separately */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -87,6 +90,7 @@ export default function MyPortfolio() {
             <Button
               onClick={handleShare}
               aria-label="Share this page"
+              disabled={isSharing}
               className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
             >
               <Share2 />
@@ -135,33 +139,36 @@ export default function MyPortfolio() {
         {/* Links */}
         <div className="w-full max-w-[280px] space-y-2 sm:space-y-3">
           {links.map((link) => (
-            <motion.a
+            <a
               key={link.id}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              whileTap={{ scale: 0.97 }}
-              whileHover={{ scale: 1.03 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: link.id * 0.15 }}
               className="block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 rounded-2xl"
             >
-              <Card
-                className={`w-full rounded-2xl border border-white/40 ${
-                  darkMode
-                    ? "bg-white/10 backdrop-blur-lg text-white"
-                    : "bg-white/30 backdrop-blur-lg text-black"
-                } shadow-xl hover:scale-[1.02] hover:brightness-105 hover:shadow-2xl hover:shadow-pink-300/30 transition-all`}
+              <motion.div
+                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.03 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: link.id * 0.15 }}
               >
-                <CardContent className="py-1.5 px-2 flex items-center gap-1.5">
-                  <link.Icon className={`w-5 h-5 ${link.iconColor}`} />
-                  <span className="flex-1 text-center text-base font-medium">
-                    {link.title}
-                  </span>
-                </CardContent>
-              </Card>
-            </motion.a>
+                <Card
+                  className={`w-full rounded-2xl border border-white/40 ${
+                    darkMode
+                      ? "bg-white/10 backdrop-blur-lg text-white"
+                      : "bg-white/30 backdrop-blur-lg text-black"
+                  } shadow-xl hover:scale-[1.02] hover:brightness-105 hover:shadow-2xl hover:shadow-pink-300/30 transition-all`}
+                >
+                  <CardContent className="py-1.5 px-2 flex items-center gap-1.5">
+                    <link.Icon className={`w-5 h-5 ${link.iconColor}`} />
+                    <span className="flex-1 text-center text-base font-medium">
+                      {link.title}
+                    </span>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </a>
           ))}
         </div>
 
