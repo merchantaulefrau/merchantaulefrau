@@ -169,7 +169,7 @@ export default function MyPortfolio() {
             alt="Footer logo"
             className="w-5 h-5 rounded-full border border-white"
           />
-          <span>© 2025 Aulefrau's Nook</span>
+          <span>© 2018 Aulefrau's Nook</span>
         </div>
       </footer>
     </motion.div>
