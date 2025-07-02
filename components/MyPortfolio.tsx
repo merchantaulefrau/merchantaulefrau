@@ -89,13 +89,15 @@ export default function MyPortfolio() {
               }}
             >
               <Button
-                onClick={handleShare}
-                aria-label="Share this page"
-                disabled={isSharing}
-                className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
-              >
-                <Share2 />
-              </Button>
+  onClick={handleShare}
+  aria-label="Share this page"
+  className={`focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 ${
+    isSharing ? "opacity-50 pointer-events-none" : ""
+  }`}
+>
+  <Share2 />
+</Button>
+
             </motion.div>
 
             <Button
