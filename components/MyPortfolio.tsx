@@ -63,7 +63,7 @@ export default function MyPortfolio() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 ${
+      class={`min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 ${
         darkMode
           ? "bg-gray-900 text-white"
           : "bg-gradient-to-br from-yellow-300 to-pink-300 text-black"
@@ -117,16 +117,16 @@ export default function MyPortfolio() {
       </div>
 
       {/* Name */}
-<div className="text-center mb-4 sm:mb-6 max-w-xs sm:max-w-md">
-  <h1 className="text-2xl sm:text-4xl font-bold drop-shadow">
-    Aulefrau's Nook
-  </h1>
-  <p className="text-[10px] sm:text-xs mt-2 sm:mt-3 leading-relaxed">
-    Aulefrau's Nook is a vibrant haven owned by a mom and visual artist,
-    offering original art, unique accessories, and thoughtfully handcrafted décor, bookmarks, trinkets, and more—all infused with creative passion.
-    The shop also welcomes art commissions for those seeking truly special, one-of-a-kind pieces.
-  </p>
-</div>
+      <div className="text-center mb-4 sm:mb-6 max-w-xs sm:max-w-md">
+        <h1 className="text-2xl sm:text-4xl font-bold drop-shadow">
+          Aulefrau's Nook
+        </h1>
+        <p className="text-[10px] sm:text-xs mt-2 sm:mt-3 leading-relaxed">
+          Aulefrau's Nook is a vibrant haven owned by a mom and visual artist,
+          offering original art, unique accessories, and thoughtfully handcrafted décor, bookmarks, trinkets, and more—all infused with creative passion.
+          The shop also welcomes art commissions for those seeking truly special, one-of-a-kind pieces.
+        </p>
+      </div>
 
       {/* Links */}
       <div className="w-full max-w-[280px] space-y-2 sm:space-y-3">
@@ -141,7 +141,7 @@ export default function MyPortfolio() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: link.id * 0.15 }}
-            className="block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 rounded-2xl"
+            class={`block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 rounded-2xl`}
           >
             <Card
               className={`w-full rounded-2xl border border-white/40 ${
