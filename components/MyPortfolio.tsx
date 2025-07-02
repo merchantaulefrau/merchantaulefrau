@@ -117,16 +117,15 @@ export default function MyPortfolio() {
       </div>
 
       {/* Name */}
-<div className="text-center mb-4 sm:mb-6 max-w-xs sm:max-w-md">
-  <h1 className="text-2xl sm:text-4xl font-bold drop-shadow">
-    Aulefrau's Nook
-  </h1>
-  <p className="text-[10px] sm:text-xs mt-2 sm:mt-3 leading-relaxed">
-    Aulefrau's Nook is a vibrant haven owned by a mom and visual artist,
-    offering original art, unique accessories, and thoughtfully handcrafted décor, bookmarks, trinkets, and more—all infused with creative passion.
-    The shop also welcomes art commissions for those seeking truly special, one-of-a-kind pieces.
-  </p>
-</div>
+      <div className="text-center mb-4 sm:mb-6 max-w-xs sm:max-w-md">
+        <h1 className="text-2xl sm:text-4xl font-bold drop-shadow">
+          Aulefrau's Nook
+        </h1>
+        <p className="text-[10px] sm:text-xs mt-2 sm:mt-3 leading-relaxed">
+          Original art, handmade décor, and unique accessories crafted with love.
+          Commissions welcome for one-of-a-kind pieces.
+        </p>
+      </div>
 
       {/* Links */}
       <div className="w-full max-w-[280px] space-y-2 sm:space-y-3">
@@ -169,7 +168,7 @@ export default function MyPortfolio() {
             alt="Footer logo"
             className="w-5 h-5 rounded-full border border-white"
           />
-          <span>© 2018 Aulefrau's Nook</span>
+          <span>© 2025 Aulefrau's Nook</span>
         </div>
       </footer>
     </motion.div>
