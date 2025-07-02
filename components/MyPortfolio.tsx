@@ -59,17 +59,16 @@ export default function MyPortfolio() {
   };
 
   return (
-<motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  className={`min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 ${
-    darkMode
-      ? "bg-gray-900 text-white"
-      : "bg-gradient-to-br from-yellow-300 to-pink-300 text-black"
-  } transition-colors duration-500`}
->
-
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 ${
+        darkMode
+          ? "bg-gray-900 text-white"
+          : "bg-gradient-to-br from-yellow-300 to-pink-300 text-black"
+      } transition-colors duration-500`}
+    >
       {/* Top Controls */}
       <div className="w-full flex justify-end items-center gap-2 mb-4 pr-2 sm:pr-4">
         <motion.div
@@ -169,7 +168,7 @@ export default function MyPortfolio() {
             alt="Footer logo"
             className="w-5 h-5 rounded-full border border-white"
           />
-          <span>© 2018 Aulefrau's Nook</span>
+          <span>© 2025 Aulefrau's Nook</span>
         </div>
       </footer>
     </motion.div>
