@@ -24,7 +24,7 @@ export default function MyPortfolio() {
     {
       id: 1,
       title: "Facebook",
-      url: "https://www.facebook.com/share/merchantaulefrau",
+      url: "https://www.facebook.com/merchantaulefrau",
       Icon: FaFacebook,
       iconColor: "text-blue-600",
     },
